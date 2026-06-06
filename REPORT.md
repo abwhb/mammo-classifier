@@ -102,7 +102,9 @@ The CBIS-DDSM test set is 41 % malignant. In a real screening cohort the prevale
 - **ROC AUC** — threshold-free measure of discriminative power, independent of operating point and prevalence.
 - **PR AUC** — more honest than ROC AUC at low malignant prevalence (which matches the deployed screening setting we'd care about, not the curated 41 % test set).
 
-The model achieves **ROC AUC 0.754** on the held-out test set (curve in `reports/roc.png`). PR AUC is **0.671**. Both reflect a useful-but-not-state-of-the-art classifier; published deep models on full-DICOM CBIS-DDSM with in-domain pretraining reach 0.85–0.95 AUC. The gap is mostly explained by §6 ("Trade-offs").
+The model achieves **ROC AUC 0.754** on the held-out test set. PR AUC is **0.671**. Both reflect a useful-but-not-state-of-the-art classifier; published deep models on full-DICOM CBIS-DDSM with in-domain pretraining reach 0.85–0.95 AUC. The gap is mostly explained by §6 ("Trade-offs").
+
+![ROC curve on the CBIS-DDSM test set (n=641). The dashed diagonal is a chance classifier; AUC=0.754 corresponds to the area under the solid curve.](reports/roc.png){width=60%}
 
 ## 4.2 Threshold selection and the three operating points
 

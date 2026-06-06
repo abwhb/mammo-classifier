@@ -25,13 +25,18 @@ See [`DESIGN.md`](./DESIGN.md) for architecture and rationale, [`AGENT.md`](./AG
 - Node.js 22+ and `pnpm`
 - (Optional, for training) A GPU — CUDA or Apple Silicon MPS. CPU training works but is slow.
 
-## Quick start
+## Live URLs
+
+- **Frontend:** <https://mammo-classifier.vercel.app>
+- **Backend health:** <https://abwhb-mammo-classifier-api.hf.space/healthz>
+
+## Quick start (local)
 
 ```bash
 make install        # sync apps/api (uv) and apps/web (pnpm)
 make api            # FastAPI on http://localhost:8080
 make web            # Next.js on http://localhost:3000   (separate terminal)
-make test           # Run backend tests
+make test           # Run backend tests (7/7 expected)
 ```
 
 Open <http://localhost:3000> and upload a DICOM, PNG, or JPEG mammogram.
@@ -88,7 +93,30 @@ Metrics, ROC plot, and confusion matrix land in `reports/`.
 
 ## Deploy
 
-Phase 5 (pending). Targets: Hugging Face Spaces (Docker) for the API, Vercel for the web. See `DESIGN.md` §5.
+```bash
+# Backend → Hugging Face Docker Space
+HF_TOKEN=hf_xxx uv run --with huggingface_hub --no-project \
+    python infra/deploy_hf_space.py --repo-id <user>/<space-name>
+
+# Frontend → Vercel
+cd apps/web
+vercel link --yes --project mammo-classifier --scope <your-team>
+echo "https://<user>-<space-name>.hf.space" | vercel env add API_URL production
+vercel deploy --prod --yes
+```
+
+The Dockerfile is portable; the same image runs on GCP Cloud Run unchanged
+(see `DESIGN.md` §5 for the intended in-Kingdom production target).
+
+## Generating the technical report (PDF)
+
+```bash
+uv run --with markdown --with pygments --with playwright --no-project \
+    python scripts/render_report.py
+# writes reports/REPORT.html and reports/REPORT.pdf
+```
+
+The renderer uses Chromium headless via Playwright — no LaTeX toolchain needed.
 
 ## Privacy
 
