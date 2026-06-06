@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+.uv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+
+# Data & models (heavy, downloaded out-of-band)
+ml/data/
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.onnx
+!models/.gitkeep
+
+# Reports artifacts (kept selectively)
+reports/*.png
+reports/*.pdf
+reports/metrics.json
+!reports/.gitkeep
+
+# Samples (PHI risk — never commit real DICOMs)
+samples/*.dcm
+samples/*.png
+samples/*.jpg
+!samples/.gitkeep
+!samples/synthetic_*
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
