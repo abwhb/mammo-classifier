@@ -29,9 +29,8 @@ models/*.bin
 models/*.onnx
 !models/.gitkeep
 
-# Reports artifacts: keep generated JSON + ROC plot in-repo so they show up
-# in the PDF report and the reviewer doesn't have to retrain to inspect them.
-reports/*.pdf
+# Reports artifacts: keep generated JSON + ROC plot + the rendered PDF/HTML
+# in-repo so the reviewer doesn't have to retrain or re-render.
 !reports/.gitkeep
 
 # Local-only screenshots from manual verification

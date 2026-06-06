@@ -12,6 +12,7 @@ from fastapi.responses import JSONResponse
 from app.config import Settings, load_settings
 from app.inference import ModelBundle
 from app.logging_setup import configure_logging, get_logger
+from app.ood import is_plausible_mammogram
 from app.preprocess import to_tensor
 from app.privacy import strip_identifiers
 from app.schemas import HealthResponse, PredictionResponse
@@ -110,6 +111,22 @@ async def predict(
 
     # Privacy first — strip PHI before anything else touches the bytes.
     cleaned = strip_identifiers(raw)
+
+    # Lightweight OOD guard: reject obvious non-mammograms (screenshots,
+    # photos, documents) before they reach a model that has no out-of-
+    # distribution awareness. See app/ood.py for the trade-off discussion.
+    ood = is_plausible_mammogram(cleaned)
+    if not ood.is_plausible:
+        log.warning(
+            "predict.ood_rejected",
+            request_id=request_id,
+            reason=ood.reason,
+            dark_fraction=ood.dark_fraction,
+            edge_density=ood.edge_density,
+            mime=file.content_type,
+            size=len(raw),
+        )
+        raise HTTPException(status_code=422, detail=ood.reason)
 
     try:
         tensor = to_tensor(cleaned)
