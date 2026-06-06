@@ -1,0 +1,137 @@
+{
+  "model_version": "mammo-v1",
+  "arch": "efficientnet_b0",
+  "best_val_auc_during_training": 0.7889387704202518,
+  "api_operating_point": "screening",
+  "api_threshold": 0.277925968170166,
+  "operating_points": {
+    "screening": {
+      "threshold": 0.277925968170166,
+      "rationale": "Lowest false-negative rate while keeping val sensitivity \u2265 0.90. Used by the API.",
+      "test": {
+        "accuracy": 0.6068642745709828,
+        "sensitivity": 0.9230769230769231,
+        "specificity": 0.3910761154855643,
+        "roc_auc": 0.7544619422572179,
+        "pr_auc": 0.6706193013436746,
+        "threshold": 0.277925968170166,
+        "tp": 240,
+        "fp": 232,
+        "tn": 149,
+        "fn": 20,
+        "n": 641,
+        "prevalence_malignant": 0.40561622464898595
+      },
+      "val": {
+        "accuracy": 0.6485260770975056,
+        "sensitivity": 0.9040404040404041,
+        "specificity": 0.4403292181069959,
+        "roc_auc": 0.7889387704202518,
+        "pr_auc": 0.7740471546800493,
+        "threshold": 0.277925968170166,
+        "tp": 179,
+        "fp": 136,
+        "tn": 107,
+        "fn": 19,
+        "n": 441,
+        "prevalence_malignant": 0.4489795918367347
+      }
+    },
+    "diagnostic": {
+      "threshold": 0.6139619946479797,
+      "rationale": "Highest specificity while keeping val specificity \u2265 0.80. Useful for follow-up reads.",
+      "test": {
+        "accuracy": 0.6833073322932918,
+        "sensitivity": 0.5807692307692308,
+        "specificity": 0.7532808398950132,
+        "roc_auc": 0.7544619422572179,
+        "pr_auc": 0.6706193013436746,
+        "threshold": 0.6139619946479797,
+        "tp": 151,
+        "fp": 94,
+        "tn": 287,
+        "fn": 109,
+        "n": 641,
+        "prevalence_malignant": 0.40561622464898595
+      },
+      "val": {
+        "accuracy": 0.7097505668934241,
+        "sensitivity": 0.5959595959595959,
+        "specificity": 0.8024691358024691,
+        "roc_auc": 0.7889387704202518,
+        "pr_auc": 0.7740471546800493,
+        "threshold": 0.6139619946479797,
+        "tp": 118,
+        "fp": 48,
+        "tn": 195,
+        "fn": 80,
+        "n": 441,
+        "prevalence_malignant": 0.4489795918367347
+      }
+    },
+    "balanced": {
+      "threshold": 0.5300464630126953,
+      "rationale": "Youden's J \u2014 maximises sensitivity + specificity \u2212 1 on val.",
+      "test": {
+        "accuracy": 0.6645865834633385,
+        "sensitivity": 0.6730769230769231,
+        "specificity": 0.6587926509186351,
+        "roc_auc": 0.7544619422572179,
+        "pr_auc": 0.6706193013436746,
+        "threshold": 0.5300464630126953,
+        "tp": 175,
+        "fp": 130,
+        "tn": 251,
+        "fn": 85,
+        "n": 641,
+        "prevalence_malignant": 0.40561622464898595
+      },
+      "val": {
+        "accuracy": 0.7165532879818595,
+        "sensitivity": 0.702020202020202,
+        "specificity": 0.7283950617283951,
+        "roc_auc": 0.7889387704202518,
+        "pr_auc": 0.7740471546800493,
+        "threshold": 0.5300464630126953,
+        "tp": 139,
+        "fp": 66,
+        "tn": 177,
+        "fn": 59,
+        "n": 441,
+        "prevalence_malignant": 0.4489795918367347
+      }
+    },
+    "default_0.5": {
+      "threshold": 0.5,
+      "rationale": "Sigmoid default; reported for transparency only.",
+      "test": {
+        "accuracy": 0.6645865834633385,
+        "sensitivity": 0.7076923076923077,
+        "specificity": 0.6351706036745407,
+        "roc_auc": 0.7544619422572179,
+        "pr_auc": 0.6706193013436746,
+        "threshold": 0.5,
+        "tp": 184,
+        "fp": 139,
+        "tn": 242,
+        "fn": 76,
+        "n": 641,
+        "prevalence_malignant": 0.40561622464898595
+      },
+      "val": {
+        "accuracy": 0.7052154195011338,
+        "sensitivity": 0.7222222222222222,
+        "specificity": 0.691358024691358,
+        "roc_auc": 0.7889387704202518,
+        "pr_auc": 0.7740471546800493,
+        "threshold": 0.5,
+        "tp": 143,
+        "fp": 75,
+        "tn": 168,
+        "fn": 55,
+        "n": 441,
+        "prevalence_malignant": 0.4489795918367347
+      }
+    }
+  }
+}

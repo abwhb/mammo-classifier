@@ -29,11 +29,14 @@ models/*.bin
 models/*.onnx
 !models/.gitkeep
 
-# Reports artifacts (kept selectively)
-reports/*.png
+# Reports artifacts: keep generated JSON + ROC plot in-repo so they show up
+# in the PDF report and the reviewer doesn't have to retrain to inspect them.
 reports/*.pdf
-reports/metrics.json
 !reports/.gitkeep
+
+# Local-only screenshots from manual verification
+ui-*.png
+.playwright-mcp/
 
 # Samples (PHI risk — never commit real DICOMs)
 samples/*.dcm
