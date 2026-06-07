@@ -21,7 +21,7 @@ I built and deployed an end-to-end binary mammogram classifier (Malignant vs Ben
 | Frontend (Vercel) | <https://mammo-classifier.vercel.app> |
 | Backend API (Hugging Face Space, Docker) | <https://abwhb-mammo-classifier-api.hf.space> |
 | API health | <https://abwhb-mammo-classifier-api.hf.space/healthz> |
-| Source repository | _(populate after pushing to GitHub)_ |
+| Source repository | <https://github.com/abwhb/mammo-classifier> |
 
 **Headline metrics on the held-out CBIS-DDSM test set (n = 641, 41 % malignant):**
 
